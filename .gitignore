@@ -1,0 +1,93 @@
+# -------------------------------
+# Django
+# -------------------------------
+
+# Entornos virtuales
+venv/
+ENV/
+env/
+.venv/
+
+# Archivos de configuración de entorno
+.env
+
+# Archivos de base de datos
+db.sqlite3
+*.sqlite3
+
+# Archivos de migraciones
+*/migrations/*.pyc
+*/migrations/__pycache__/
+
+# Archivos estáticos
+/staticfiles/
+static/
+
+# Archivos de medios
+/media/
+
+# Archivos de logs
+*.log
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -------------------------------
+# React
+# -------------------------------
+
+# Dependencias de Node.js
+node_modules/
+
+# Directorios de construcción
+build/
+dist/
+out/
+
+# Archivos de configuración
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de caché
+.cache/
+*.cache
+
+# Archivos de log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# -------------------------------
+# Otros
+# -------------------------------
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de IDE/editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de empaquetado
+*.zip
+*.tar.gz
+*.tgz
+
+# Archivos de documentación
+*.pdf
+*.docx
+
+
+# Archivos de configuración de entorno
+backend/.env
