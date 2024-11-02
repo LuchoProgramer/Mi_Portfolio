@@ -1,4 +1,3 @@
-// src/components/Contact.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -19,21 +18,24 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí deberías enviar los datos al backend para procesar el correo o almacenarlo
     axios.post('http://localhost:8000/api/contacto/', formData)
       .then(response => {
-        setStatus('Mensaje enviado exitosamente.');
+        setStatus({ message: 'Mensaje enviado exitosamente.', success: true });
         setFormData({ nombre: '', email: '', mensaje: '' });
       })
       .catch(error => {
-        setStatus('Error al enviar el mensaje. Por favor, intenta nuevamente.');
+        setStatus({ message: 'Error al enviar el mensaje. Por favor, intenta nuevamente.', success: false });
       });
   };
 
   return (
     <section className="max-w-4xl mx-auto p-8">
       <h2 className="text-3xl font-semibold text-gray-dark dark:text-white mb-6">Contacto</h2>
-      {status && <p className="mb-4 text-center text-green-500">{status}</p>}
+      {status && (
+        <p className={`mb-4 text-center ${status.success ? 'text-green-500' : 'text-red-500'}`}>
+          {status.message}
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="nombre" className="block text-sm font-medium text-gray-dark dark:text-gray-light">Nombre</label>
@@ -44,7 +46,7 @@ function Contact() {
             value={formData.nombre}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary-dark dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary-dark transition duration-300 ease-in-out dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
           />
         </div>
         <div>
@@ -56,7 +58,7 @@ function Contact() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary-dark dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary-dark transition duration-300 ease-in-out dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
           />
         </div>
         <div>
@@ -68,10 +70,13 @@ function Contact() {
             onChange={handleChange}
             required
             rows="5"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary-dark dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary-dark transition duration-300 ease-in-out dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
           ></textarea>
         </div>
-        <button type="submit" className="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg">
+        <button
+          type="submit"
+          className="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg"
+        >
           Enviar
         </button>
       </form>
@@ -80,4 +85,5 @@ function Contact() {
 }
 
 export default Contact;
+
 

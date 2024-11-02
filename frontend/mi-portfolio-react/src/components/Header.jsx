@@ -1,5 +1,5 @@
+// src/components/Header.jsx
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import ToggleDarkMode from './ToggleDarkMode';
 import { FiMenu, FiX } from 'react-icons/fi';
 
@@ -33,54 +33,45 @@ function Header() {
         {/* Menú de Navegación */}
         <nav
           id="navigation-menu"
-          className={`${
-            isOpen ? 'block' : 'hidden'
-          } absolute top-full left-0 w-full bg-primary-dark md:static md:block md:w-auto`}
+          className={`${isOpen ? 'block' : 'hidden'
+            } absolute top-full left-0 w-full bg-primary-dark md:static md:block md:w-auto`}
         >
           <ul className="flex flex-col md:flex-row md:items-center md:space-x-6">
             <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? 'text-primary-light block px-4 py-2' : 'text-white block px-4 py-2 hover:text-primary-light transition-colors'
-                }
+              <a
+                href="#home"
+                className="block px-4 py-2 text-white hover:text-primary-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Inicio
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink
-                to="/proyectos"
-                className={({ isActive }) =>
-                  isActive ? 'text-primary-light block px-4 py-2' : 'text-white block px-4 py-2 hover:text-primary-light transition-colors'
-                }
+              <a
+                href="#projects"
+                className="block px-4 py-2 text-white hover:text-primary-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Proyectos
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink
-                to="/sobre-mi"
-                className={({ isActive }) =>
-                  isActive ? 'text-primary-light block px-4 py-2' : 'text-white block px-4 py-2 hover:text-primary-light transition-colors'
-                }
+              <a
+                href="#about"
+                className="block px-4 py-2 text-white hover:text-primary-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Sobre mí
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink
-                to="/contacto"
-                className={({ isActive }) =>
-                  isActive ? 'text-primary-light block px-4 py-2' : 'text-white block px-4 py-2 hover:text-primary-light transition-colors'
-                }
+              <a
+                href="#contact"
+                className="block px-4 py-2 text-white hover:text-primary-light transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Contacto
-              </NavLink>
+              </a>
             </li>
             <li>
               <ToggleDarkMode />

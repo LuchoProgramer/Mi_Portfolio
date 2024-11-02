@@ -6,7 +6,7 @@ function Button({ children, onClick, type = 'button', className = '' }) {
     <button
       type={type}
       onClick={onClick}
-      className={`bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded ${className}`}
+      className={`bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-md hover:shadow-lg ${className}`}
     >
       {children}
     </button>
@@ -14,3 +14,4 @@ function Button({ children, onClick, type = 'button', className = '' }) {
 }
 
 export default Button;
+

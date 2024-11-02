@@ -11,7 +11,7 @@ function Projects() {
     axios.get('http://localhost:8000/api/proyectos/')
       .then(response => {
         console.log('Respuesta de la API:', response.data); // Verificar el formato de la respuesta
-        
+
         // Ajustar según el formato de los datos
         if (response.data && Array.isArray(response.data)) {
           setProyectos(response.data);  // Si los datos son un arreglo
@@ -30,21 +30,22 @@ function Projects() {
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-8">Cargando proyectos...</p>;
+    return <p className="text-center text-lg text-primary mt-8">Cargando proyectos...</p>;
   }
 
   if (error) {
     return <p className="text-center text-red-500 mt-8">{error}</p>;
   }
 
-  // Verificación adicional para manejar proyectos indefinidos o vacíos
   if (!proyectos || proyectos.length === 0) {
-    return <p className="text-center mt-8">No hay proyectos para mostrar.</p>;
+    return <p className="text-center text-gray-dark dark:text-gray-light mt-8">No hay proyectos para mostrar.</p>;
   }
 
   return (
     <section className="max-w-6xl mx-auto p-8">
-      <h2 className="text-3xl font-semibold text-gray-dark dark:text-white mb-6">Proyectos</h2>
+      <h2 className="text-3xl font-bold text-gray-dark dark:text-white mb-6 text-center">
+        Mis Proyectos
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {proyectos.map(proyecto => (
           <ProyectoCard
@@ -61,3 +62,4 @@ function Projects() {
 }
 
 export default Projects;
+
