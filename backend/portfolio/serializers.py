@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Proyecto
+from .models import Blog
 
-class ProyectoSerializer(serializers.ModelSerializer):
+class BlogSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Proyecto
+        model = Blog
         fields = '__all__'

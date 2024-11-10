@@ -1,65 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import ProyectoCard from './ProyectCard';
+import React from 'react';
+import ProjectCard from './ProjectCard';
+
+const projectList = [
+    {
+        titulo: 'Proyecto 1',
+        descripcion: 'Este es un proyecto increíble que realiza tareas fascinantes.',
+        enlace: 'https://proyecto1.com',
+        enlaceGithub: 'https://github.com/usuario/proyecto1',
+        tecnologias: ['React', 'Tailwind CSS', 'API REST'],
+    },
+    {
+        titulo: 'Proyecto 2',
+        descripcion: 'Este proyecto es innovador y resuelve problemas complejos.',
+        enlace: 'https://proyecto2.com',
+        enlaceGithub: 'https://github.com/usuario/proyecto2',
+        tecnologias: ['Django', 'Python', 'Bootstrap'],
+    },
+    // Añade más proyectos aquí
+];
 
 function Projects() {
-  const [proyectos, setProyectos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/proyectos/')
-      .then(response => {
-        console.log('Respuesta de la API:', response.data); // Verificar el formato de la respuesta
-
-        // Ajustar según el formato de los datos
-        if (response.data && Array.isArray(response.data)) {
-          setProyectos(response.data);  // Si los datos son un arreglo
-        } else if (response.data && response.data.results) {
-          setProyectos(response.data.results);  // Si los datos están en "results"
-        } else {
-          setError('Datos de la API no válidos.');
-        }
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Error al obtener los proyectos:', err);
-        setError('Error al cargar los proyectos.');
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <p className="text-center text-lg text-primary mt-8">Cargando proyectos...</p>;
-  }
-
-  if (error) {
-    return <p className="text-center text-red-500 mt-8">{error}</p>;
-  }
-
-  if (!proyectos || proyectos.length === 0) {
-    return <p className="text-center text-gray-dark dark:text-gray-light mt-8">No hay proyectos para mostrar.</p>;
-  }
-
-  return (
-    <section className="max-w-6xl mx-auto p-8">
-      <h2 className="text-3xl font-bold text-gray-dark dark:text-white mb-6 text-center">
-        Mis Proyectos
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {proyectos.map(proyecto => (
-          <ProyectoCard
-            key={proyecto.id}
-            titulo={proyecto.titulo}
-            descripcion={proyecto.descripcion}
-            imagen={`http://localhost:8000${proyecto.imagen}`}
-            enlace={proyecto.enlace}
-          />
-        ))}
-      </div>
-    </section>
-  );
+    return (
+        <section className="max-w-6xl mx-auto p-8">
+            <h2 className="text-3xl font-bold text-center mb-6">Mis Proyectos</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {projectList.map((project, index) => (
+                    <ProjectCard
+                        key={index}
+                        titulo={project.titulo}
+                        descripcion={project.descripcion}
+                        enlace={project.enlace}
+                        enlaceGithub={project.enlaceGithub}
+                        tecnologias={project.tecnologias}
+                    />
+                ))}
+            </div>
+        </section>
+    );
 }
 
 export default Projects;
-

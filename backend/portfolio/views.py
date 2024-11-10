@@ -1,16 +1,12 @@
 from rest_framework import viewsets
-from .models import Proyecto
-from .serializers import ProyectoSerializer
+from .models import Blog
+from .serializers import BlogSerializer
 from django.shortcuts import render
 
+class BlogViewSet(viewsets.ModelViewSet):
+    queryset = Blog.objects.all().order_by('-fecha_publicacion')
+    serializer_class = BlogSerializer
 
-class ProyectoViewSet(viewsets.ModelViewSet):
-    """
-    ViewSet para gestionar los proyectos.
-    Permite las operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
-    """
-    queryset = Proyecto.objects.all()
-    serializer_class = ProyectoSerializer
 
 
 def inicio(request):

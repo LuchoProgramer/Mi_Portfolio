@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Proyecto
+from .models import Blog
 
-@admin.register(Proyecto)
-class ProyectoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'descripcion', 'enlace')
-    search_fields = ('titulo', 'descripcion')
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'fecha_publicacion', 'autor')
+    search_fields = ('titulo', 'contenido', 'categorias')

@@ -1,7 +1,7 @@
-// src/components/Header.jsx
 import React, { useState } from 'react';
 import ToggleDarkMode from './ToggleDarkMode';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +73,16 @@ function Header() {
                 Contacto
               </a>
             </li>
+            {/* Enlace al Blog */}
+            <li>
+              <Link
+                to="/blog"
+                className="block px-4 py-2 text-white hover:text-primary-light transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Blog
+              </Link>
+            </li>
             <li>
               <ToggleDarkMode />
             </li>
@@ -84,3 +94,4 @@ function Header() {
 }
 
 export default Header;
+
