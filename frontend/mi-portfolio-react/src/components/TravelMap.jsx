@@ -1,9 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+// src/components/TravelMap.jsx
+import React, { useContext } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
+import ThemeContext from '../ThemeContext';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.js'; // Importa el JS de AwesomeMarkers
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css'; // Importa los estilos de AwesomeMarkers
+import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.js';
+import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '../assets/TravelMap.css';
 
@@ -97,15 +99,23 @@ const createCustomIcon = (color, icon) => {
     });
 };
 
-function TravelMap({ isDark }) {
+function TravelMap() {
+    const { isDark } = useContext(ThemeContext);
+
     const tileLayerUrl = isDark
         ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
         : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 
     return (
-        <section id="travel" className="py-20 bg-gray-100 dark:bg-gray-900" style={{ height: '1000px' }}>
+        <section
+            id="travel"
+            className="py-20 bg-gray-100 dark:bg-gray-900"
+            style={{ height: '1000px' }}
+        >
             <div className="max-w-5xl mx-auto px-4" style={{ height: '100%' }}>
-                <h2 className="text-3xl font-bold text-center mb-8">Mi Aventura en Sudamérica</h2>
+                <h2 className="text-3xl font-bold text-center mb-8">
+                    Mi Aventura en Sudamérica
+                </h2>
 
                 <MapContainer
                     center={[-20.0, -60.0]}
@@ -114,7 +124,7 @@ function TravelMap({ isDark }) {
                     className="h-96 rounded-lg shadow-md map-container"
                 >
                     <TileLayer
-                        key={tileLayerUrl} // Agrega la propiedad key aquí
+                        key={tileLayerUrl}
                         url={tileLayerUrl}
                         attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
                     />

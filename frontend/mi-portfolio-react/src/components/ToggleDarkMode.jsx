@@ -1,35 +1,10 @@
 // src/components/ToggleDarkMode.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import ThemeContext from '../ThemeContext';
 
 function ToggleDarkMode() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Verificar preferencia almacenada o sistema
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      setIsDark(storedTheme === 'dark');
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDark(prefersDark);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Actualizar la clase 'dark' en el elemento raíz
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    // Guardar la preferencia en localStorage
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
+  const { isDark, toggleTheme } = useContext(ThemeContext);
 
   return (
     <button
