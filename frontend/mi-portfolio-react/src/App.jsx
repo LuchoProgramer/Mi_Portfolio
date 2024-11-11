@@ -29,30 +29,15 @@ function App() {
                 path="/"
                 element={
                   <div>
-                    <section id="home" className="pt-16">
-                      <Home />
-                    </section>
-                    <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900">
-                      <AboutMe />
-                    </section>
-                    <section id="technologies" className="py-20">
-                      <Technologies />
-                    </section>
-                    <section id="projects" className="py-20">
-                      <Projects />
-                    </section>
-                    <section id="experience" className="py-20 bg-gray-100 dark:bg-gray-900">
-                      <Experience />
-                    </section>
-                    <section id="languages" className="py-20 bg-gray-100">
-                      <Languages />
-                    </section>
-                    <section id="travel-map" className="py-20 bg-gray-100 dark:bg-gray-900">
-                      <TravelMap />
-                    </section>
-                    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-900">
-                      <Contact />
-                    </section>
+                    {/* Elimina las etiquetas <section> que envuelven a los componentes si estos ya tienen sus propias etiquetas */}
+                    <Home />
+                    <AboutMe />
+                    <Technologies />
+                    <Projects />
+                    <Experience />
+                    <Languages />
+                    <TravelMap />
+                    <Contact />
                   </div>
                 }
               />
@@ -68,4 +53,5 @@ function App() {
 }
 
 export default App;
+
 

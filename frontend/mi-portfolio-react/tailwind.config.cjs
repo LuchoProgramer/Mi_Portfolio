@@ -11,28 +11,23 @@ module.exports = {
         primary: {
           dark: '#1E3A8A',    // Azul Oscuro
           DEFAULT: '#3B82F6', // Azul Medio
-          light: '#60A5FA',    // Azul Claro
+          light: '#60A5FA',   // Azul Claro
         },
         gray: {
-          dark: '#374151',    // Gris Oscuro
-          DEFAULT: '#6B7280', // Gris Medio
-          light: '#F3F4F6',    // Gris Claro
-          veryDark: '#111827', // Gris Muy Oscuro (para fondos)
+          dark: '#374151',       // Gris Oscuro
+          DEFAULT: '#6B7280',    // Gris Medio
+          light: '#F3F4F6',      // Gris Claro
+          veryDark: '#111827',   // Gris Muy Oscuro (para fondos)
         },
-      },
-      // Opcional: Definir colores para estados (hover, active, etc.)
-      backgroundColor: {
-        'page-light': '#FFFFFF',
-        'page-dark': '#111827',
-      },
-      textColor: {
-        'text-primary': '#374151',
-        'text-secondary': '#6B7280',
-        'text-light': '#FFFFFF',
+        // Definir colores de fondo estandarizados para cada modo
+        background: {
+          light: '#F3F4F6',      // Gris claro para modo claro
+          dark: '#111827',       // Gris muy oscuro para modo oscuro
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
-        mono: ['"Fira Code"', 'monospace'], // Añadir fuente monoespaciada
+        mono: ['"Fira Code"', 'monospace'],
       },
     },
   },

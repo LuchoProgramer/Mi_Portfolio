@@ -109,12 +109,12 @@ function TravelMap() {
     return (
         <section
             id="travel"
-            className="py-20 bg-gray-100 dark:bg-gray-900"
-            style={{ height: '1000px' }}
+            className="py-12 bg-gray-100 dark:bg-gray-900"  // Cambié py-20 a py-12
+            style={{ height: '600px' }}
         >
             <div className="max-w-5xl mx-auto px-4" style={{ height: '100%' }}>
                 <h2 className="text-3xl font-bold text-center mb-8">
-                    Mi Aventura en Sudamérica
+                    Lugares que he Visitado
                 </h2>
 
                 <MapContainer
@@ -142,19 +142,13 @@ function TravelMap() {
                                 className="tooltip"
                                 permanent={false}
                             >
-                                <div className="tooltip-content">
-                                    <h3 className="font-bold">{location.name}</h3>
+                                <div className="bg-white dark:bg-gray-veryDark bg-opacity-90 border rounded-lg p-2 text-sm text-gray-dark dark:text-gray-light text-center shadow-lg w-36 max-w-36 min-h-40 flex flex-col items-center justify-center">
+                                    <h3 className="font-bold truncate">{location.name}</h3>
                                     {location.img && (
                                         <img
                                             src={location.img}
                                             alt={location.name}
-                                            style={{
-                                                width: '100px',
-                                                height: 'auto',
-                                                objectFit: 'cover',
-                                                aspectRatio: '4/3',
-                                            }}
-                                            className="rounded-md mt-2"
+                                            className="w-24 h-auto max-h-20 object-cover aspect-[4/3] rounded-md mt-1"
                                         />
                                     )}
                                 </div>
