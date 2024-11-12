@@ -15,6 +15,7 @@ import Experience from './components/Experience';
 import Languages from './components/Languages';
 import TravelMap from './components/TravelMap';
 import ToggleDarkMode from './components/ToggleDarkMode';
+import Hobbies from './components/Hobbies';
 
 function App() {
   return (
@@ -29,15 +30,14 @@ function App() {
                 path="/"
                 element={
                   <div>
-                    {/* Elimina las etiquetas <section> que envuelven a los componentes si estos ya tienen sus propias etiquetas */}
                     <Home />
                     <AboutMe />
                     <Technologies />
                     <Projects />
                     <Experience />
                     <Languages />
+                    <Hobbies />
                     <TravelMap />
-                    <Contact />
                   </div>
                 }
               />
