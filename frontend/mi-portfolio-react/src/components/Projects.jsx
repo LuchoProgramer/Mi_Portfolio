@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 
-
+import proyect2Img from '../assets/images/Healppy-pets-sitioweb.png';
 import proyecto1Img from '../assets/images/Healppypets.png';
 
 const projectList = [
@@ -19,7 +19,7 @@ const projectList = [
         enlace: 'https://proyecto2.com',
         enlaceGithub: 'https://github.com/usuario/proyecto2',
         tecnologias: ['Django', 'Python', 'Bootstrap'],
-        imagen: 'https://amaiaocerin.eus/wp-content/uploads/sitio-web-artistico-proyecto-cultural.jpg',
+        imagen: proyect2Img,
     },
 ];
 
