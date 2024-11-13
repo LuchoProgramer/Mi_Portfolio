@@ -2,14 +2,13 @@ import React from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 function ProjectCard({ titulo, descripcion, enlace, enlaceGithub, tecnologias, imagen }) {
-    console.log('Imagen URL:', imagen);
     return (
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition duration-300">
             {imagen && (
                 <img
                     src={imagen}
                     alt={`Imagen de ${titulo}`}
-                    className="w-full h-48 object-cover rounded-t-lg mb-4"
+                    className="w-full h-auto object-contain rounded-t-lg mb-4"
                 />
             )}
             <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-100">{titulo}</h3>
@@ -53,3 +52,4 @@ function ProjectCard({ titulo, descripcion, enlace, enlaceGithub, tecnologias, i
 }
 
 export default ProjectCard;
+

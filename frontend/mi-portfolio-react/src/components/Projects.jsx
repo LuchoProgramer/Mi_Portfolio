@@ -1,14 +1,17 @@
 import React from 'react';
-import ProjectCard from './ProjectCard'; // Asegúrate de que la ruta sea correcta
+import ProjectCard from './ProjectCard';
+
+
+import proyecto1Img from '../assets/images/Healppypets.png';
 
 const projectList = [
     {
         titulo: 'Proyecto 1',
         descripcion: 'Este es un proyecto increíble que realiza tareas fascinantes.',
-        enlace: 'https://proyecto1.com',
-        enlaceGithub: 'https://github.com/usuario/proyecto1',
-        tecnologias: ['React', 'Tailwind CSS', 'API REST'],
-        imagen: 'https://picsum.photos/seed/picsum/200/300', // Imagen de prueba
+        enlace: 'https://healppypets.netlify.app/',
+        enlaceGithub: 'https://github.com/LuchoProgramer/HealppyPets',
+        tecnologias: ['HTML5', 'Bootstrap', 'JavaScript'],
+        imagen: proyecto1Img,
     },
     {
         titulo: 'Proyecto 2',
@@ -16,7 +19,7 @@ const projectList = [
         enlace: 'https://proyecto2.com',
         enlaceGithub: 'https://github.com/usuario/proyecto2',
         tecnologias: ['Django', 'Python', 'Bootstrap'],
-        imagen: 'https://amaiaocerin.eus/wp-content/uploads/sitio-web-artistico-proyecto-cultural.jpg', // URL de la imagen
+        imagen: 'https://amaiaocerin.eus/wp-content/uploads/sitio-web-artistico-proyecto-cultural.jpg',
     },
 ];
 
@@ -36,7 +39,7 @@ function Projects() {
                             enlace={project.enlace}
                             enlaceGithub={project.enlaceGithub}
                             tecnologias={project.tecnologias}
-                            imagen={project.imagen} // Pasando la imagen
+                            imagen={project.imagen}
                         />
                     ))}
                 </div>
