@@ -51,7 +51,7 @@ jobs:
 
       - name: Create superuser
         env:
-          DJANGO_SUPERUSER_USERNAME: "Luis"  # Cambia "Luis" si prefieres otro nombre
+          DJANGO_SUPERUSER_USERNAME: "admin_luis"
           DJANGO_SUPERUSER_EMAIL: "luchoviteri1990@gmail.com"  # Cambia el email si es necesario
           DJANGO_SUPERUSER_PASSWORD: ${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
