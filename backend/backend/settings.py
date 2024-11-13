@@ -60,9 +60,11 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Puerto por defecto de Vite
+    "http://localhost:3000",
     "http://localhost:5173",
+    "https://luisviteridev.netlify.app",
 ]
+
 
 ROOT_URLCONF = 'backend.urls'
 
