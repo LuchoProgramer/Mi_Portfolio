@@ -10,13 +10,13 @@ const BlogForm = () => {
     const [imagen, setImagen] = useState(null);
     const [categorias, setCategorias] = useState([]);
     const [selectedCategorias, setSelectedCategorias] = useState([]);
+    const [nuevaCategoria, setNuevaCategoria] = useState(''); // Nuevo campo para categoría
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [categoriesLoading, setCategoriesLoading] = useState(true);
     const navigate = useNavigate();
 
-    // Define API_URL directamente para pruebas
-    const API_URL = 'https://mi-portfolio-7.onrender.com';
+    const API_URL = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -41,14 +41,24 @@ const BlogForm = () => {
             return;
         }
 
-        const formData = new FormData();
-        formData.append('titulo', titulo);
-        formData.append('contenido', contenido);
-        if (imagen) formData.append('imagen', imagen);
-        selectedCategorias.forEach(cat => formData.append('categorias', cat));
-
         try {
             setLoading(true);
+            let categoriaIds = [...selectedCategorias];
+
+            // Verifica si hay una nueva categoría
+            if (nuevaCategoria) {
+                const newCategoryResponse = await axios.post(`${API_URL}/api/categories/`, {
+                    nombre: nuevaCategoria
+                });
+                categoriaIds.push(newCategoryResponse.data.id); // Añade la nueva categoría a la lista de IDs
+            }
+
+            const formData = new FormData();
+            formData.append('titulo', titulo);
+            formData.append('contenido', contenido);
+            if (imagen) formData.append('imagen', imagen);
+            categoriaIds.forEach(cat => formData.append('categorias', cat)); // Usa la lista de IDs de categorías
+
             await axios.post(`${API_URL}/api/blogs/`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -95,7 +105,7 @@ const BlogForm = () => {
             </div>
 
             <div className="mb-4">
-                <label className="block text-gray-700">Categorías</label>
+                <label className="block text-gray-700">Categorías Existentes</label>
                 {categoriesLoading ? (
                     <p>Cargando categorías...</p>
                 ) : (
@@ -114,6 +124,17 @@ const BlogForm = () => {
                 )}
             </div>
 
+            <div className="mb-4">
+                <label className="block text-gray-700">Crear Nueva Categoría</label>
+                <input
+                    type="text"
+                    value={nuevaCategoria}
+                    onChange={(e) => setNuevaCategoria(e.target.value)}
+                    placeholder="Escribe el nombre de la nueva categoría"
+                    className="w-full p-2 border border-gray-300 rounded"
+                />
+            </div>
+
             <button
                 type="submit"
                 disabled={loading}
@@ -126,3 +147,4 @@ const BlogForm = () => {
 };
 
 export default BlogForm;
+
