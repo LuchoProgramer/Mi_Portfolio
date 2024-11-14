@@ -1,4 +1,3 @@
-// src/components/BlogForm.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -16,10 +15,13 @@ const BlogForm = () => {
     const [categoriesLoading, setCategoriesLoading] = useState(true);
     const navigate = useNavigate();
 
+    // Define API_URL desde las variables de entorno
+    const API_URL = process.env.REACT_APP_API_URL;
+
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/categories/');
+                const response = await axios.get(`${API_URL}/api/categories/`);
                 setCategorias(response.data);
             } catch (error) {
                 console.error("Error fetching categories:", error);
@@ -29,7 +31,7 @@ const BlogForm = () => {
             }
         };
         fetchCategories();
-    }, []);
+    }, [API_URL]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,7 +49,7 @@ const BlogForm = () => {
 
         try {
             setLoading(true);
-            await axios.post('http://localhost:8000/api/blogs/', formData, {
+            await axios.post(`${API_URL}/api/blogs/`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
