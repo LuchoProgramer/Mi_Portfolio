@@ -19,19 +19,21 @@ const BlogForm = () => {
     const API_URL = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await axios.get(`${API_URL}/api/categories/`);
+        console.log('API URL:', API_URL);  // Revisa que imprima la URL correcta
+        axios.get(`${API_URL}/api/categories/`)
+            .then(response => {
+                console.log('Categorías recibidas:', response.data);  // Revisa que recibas datos
                 setCategorias(response.data);
-            } catch (error) {
+            })
+            .catch(error => {
                 console.error("Error fetching categories:", error);
                 setError("Hubo un problema al cargar las categorías.");
-            } finally {
+            })
+            .finally(() => {
                 setCategoriesLoading(false);
-            }
-        };
-        fetchCategories();
+            });
     }, [API_URL]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
