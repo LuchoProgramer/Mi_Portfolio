@@ -7,8 +7,11 @@ function Blogs() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // Definir la URL base de la API usando la variable de entorno
+    const API_URL = process.env.REACT_APP_API_URL;
+
     useEffect(() => {
-        axios.get('http://localhost:8000/api/blogs/')
+        axios.get(`${API_URL}/api/blogs/`)
             .then(response => {
                 console.log('Respuesta de la API:', response.data);
 
@@ -26,7 +29,7 @@ function Blogs() {
                 setError('Error al cargar los blogs.');
                 setLoading(false);
             });
-    }, []);
+    }, [API_URL]);
 
     if (loading) {
         return <p className="text-center text-lg text-primary mt-8">Cargando blogs...</p>;
@@ -51,7 +54,7 @@ function Blogs() {
                         key={blog.id}
                         titulo={blog.titulo}
                         contenido={blog.contenido}
-                        imagen={`${BASE_URL}${blog.imagen}`}
+                        imagen={`${API_URL}${blog.imagen}`}  // Usar API_URL en lugar de BASE_URL
                     />
                 ))}
             </div>
@@ -60,3 +63,4 @@ function Blogs() {
 }
 
 export default Blogs;
+
