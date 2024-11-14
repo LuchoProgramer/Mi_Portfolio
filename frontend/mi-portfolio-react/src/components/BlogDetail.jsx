@@ -9,7 +9,7 @@ function BlogDetail() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/blogs/${id}/`)
+        axios.get(`${process.env.REACT_APP_API_URL}blogs/${id}/`)
             .then(response => {
                 setBlog(response.data);
                 setLoading(false);
@@ -39,7 +39,7 @@ function BlogDetail() {
                 {blog.titulo}
             </h2>
             {blog.imagen && (
-                <img src={`http://localhost:8000${blog.imagen}`} alt={blog.titulo} className="w-full h-80 object-cover mb-4 rounded-lg" />
+                <img src={`${process.env.REACT_APP_API_URL}${blog.imagen}`} alt={blog.titulo} className="w-full h-80 object-cover mb-4 rounded-lg" />
             )}
             <p className="text-gray-600 dark:text-gray-300">{blog.contenido}</p>
         </section>
