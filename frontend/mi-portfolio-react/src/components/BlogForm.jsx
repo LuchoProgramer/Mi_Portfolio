@@ -10,7 +10,7 @@ const BlogForm = () => {
     const [imagen, setImagen] = useState(null);
     const [categorias, setCategorias] = useState([]);
     const [selectedCategorias, setSelectedCategorias] = useState([]);
-    const [nuevaCategoria, setNuevaCategoria] = useState(''); // Nuevo campo para categoría
+    const [nuevaCategoria, setNuevaCategoria] = useState(''); // Campo para nueva categoría
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [categoriesLoading, setCategoriesLoading] = useState(true);
@@ -45,26 +45,26 @@ const BlogForm = () => {
             setLoading(true);
             let categoriaIds = [...selectedCategorias];
 
-            // Verifica si hay una nueva categoría
-            if (nuevaCategoria) {
+            // Si hay una nueva categoría, créala y añade su ID a la lista
+            if (nuevaCategoria.trim()) {
                 const newCategoryResponse = await axios.post(`${API_URL}/api/categories/`, {
                     nombre: nuevaCategoria
                 });
-                categoriaIds.push(newCategoryResponse.data.id); // Añade la nueva categoría a la lista de IDs
+                categoriaIds.push(newCategoryResponse.data.id); // Añadir nueva categoría a los IDs
             }
 
             const formData = new FormData();
             formData.append('titulo', titulo);
             formData.append('contenido', contenido);
             if (imagen) formData.append('imagen', imagen);
-            categoriaIds.forEach(cat => formData.append('categorias', cat)); // Usa la lista de IDs de categorías
+            categoriaIds.forEach(cat => formData.append('categorias', cat));
 
             await axios.post(`${API_URL}/api/blogs/`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            navigate('/blog'); // Redirigir a la lista de blogs después de crear
+            navigate('/blog'); // Redirigir después de crear
         } catch (error) {
             console.error("Error creating blog:", error);
             setError("Hubo un problema al crear el blog.");
@@ -117,9 +117,13 @@ const BlogForm = () => {
                         }
                         className="w-full p-2 border border-gray-300 rounded"
                     >
-                        {categorias.map(cat => (
-                            <option key={cat.id} value={cat.id}>{cat.nombre}</option>
-                        ))}
+                        {Array.isArray(categorias) && categorias.length > 0 ? (
+                            categorias.map(cat => (
+                                <option key={cat.id} value={cat.id}>{cat.nombre}</option>
+                            ))
+                        ) : (
+                            <option disabled>No hay categorías disponibles</option>
+                        )}
                     </select>
                 )}
             </div>
