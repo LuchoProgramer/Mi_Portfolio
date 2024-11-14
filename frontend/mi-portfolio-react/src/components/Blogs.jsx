@@ -51,7 +51,7 @@ function Blogs() {
                         key={blog.id}
                         titulo={blog.titulo}
                         contenido={blog.contenido}
-                        imagen={`http://localhost:8000${blog.imagen}`}
+                        imagen={`${BASE_URL}${blog.imagen}`}
                     />
                 ))}
             </div>

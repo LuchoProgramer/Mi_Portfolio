@@ -1,13 +1,12 @@
 // src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ThemeProvider } from './ThemeContext'; // Importa el ThemeProvider
+import { ThemeProvider } from './ThemeContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
-import Contact from './components/Contact';
 import Technologies from './components/Technologies';
 import Blogs from './components/Blogs';
 import BlogDetail from './components/BlogDetail';
@@ -16,6 +15,7 @@ import Languages from './components/Languages';
 import TravelMap from './components/TravelMap';
 import ToggleDarkMode from './components/ToggleDarkMode';
 import Hobbies from './components/Hobbies';
+import BlogForm from './components/BlogForm';
 
 function App() {
   return (
@@ -41,8 +41,10 @@ function App() {
                   </div>
                 }
               />
-              <Route path="/blog" element={<Blogs />} />
-              <Route path="/blog/:id" element={<BlogDetail />} />
+              {/* Rutas para blogs */}
+              <Route path="/blog" element={<Blogs />} /> {/* Lista de blogs */}
+              <Route path="/blog/:id" element={<BlogDetail />} /> {/* Detalle de blog */}
+              <Route path="/create" element={<BlogForm />} />
             </Routes>
           </main>
           <Footer />
@@ -53,5 +55,3 @@ function App() {
 }
 
 export default App;
-
-
