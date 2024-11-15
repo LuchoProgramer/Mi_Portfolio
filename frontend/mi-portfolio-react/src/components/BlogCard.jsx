@@ -1,24 +1,29 @@
-// src/components/BlogCard.js
+// src/components/BlogCard.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function BlogCard({ titulo, contenido, imagen }) {
+const BlogCard = ({ blog }) => {
     return (
-        <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
-            {imagen && <img src={imagen} alt={titulo} className="w-full h-48 object-cover" />}
-            <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-dark dark:text-white mb-2">{titulo}</h3>
-                <p className="text-gray-700 dark:text-gray-300">{contenido.substring(0, 100)}...</p>
-                <Link
-                    to={`/blog/${titulo}`}
-                    className="text-primary dark:text-primary-light font-semibold hover:underline mt-2 inline-block"
-                >
-                    Leer más
-                </Link>
-            </div>
+        <div className="group flex flex-col p-4 bg-background-light dark:bg-background-dark rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full sm:w-72 md:w-80">
+            <img
+                src={blog.image || '/assets/default-image.jpg'}
+                alt={blog.title}
+                className="w-full h-40 object-cover rounded-t-lg mb-4"
+            />
+            <h3 className="text-xl font-semibold mb-2 text-gray-veryDark dark:text-gray-light">
+                {blog.title}
+            </h3>
+            <p className="text-gray-dark dark:text-gray-light mb-4">
+                {blog.excerpt}
+            </p>
+            <a
+                href={`/blog/${blog.id}`}
+                className="text-primary-dark dark:text-primary-light hover:text-primary-light dark:hover:text-primary-dark hover:underline self-end transition-colors duration-200"
+            >
+                Leer más
+            </a>
         </div>
     );
-}
+};
 
 export default BlogCard;
 
