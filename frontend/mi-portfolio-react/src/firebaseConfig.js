@@ -1,6 +1,6 @@
-// src/firebaseConfig.js
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -15,6 +15,11 @@ const firebaseConfig = {
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app); // Inicializar autenticación
+const googleProvider = new GoogleAuthProvider(); // Proveedor de Google para autenticación
+
+// Exportar módulos
+export { db, auth, googleProvider };
 
 // Función para crear un blog
 export const createBlog = async (blogData) => {
@@ -59,4 +64,3 @@ export const deleteBlog = async (id) => {
     }
 };
 
-export { db };
