@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import '../assets/TravelMap.css';
 
 //Importar Imagenes
-import QuitoImage from '../assets/locations/Quito.jpg';
+import QuitoImage from 'https://res.cloudinary.com/dltfsttr7/image/upload/v1731947461/Quito_gag520.jpg';
 import CuencaImage from '../assets/locations/Cuenca.jpg';
 import CajamarcaImage from '../assets/locations/Cajamarca.jpg';
 import LimaImage from '../assets/locations/Lima.jpg';

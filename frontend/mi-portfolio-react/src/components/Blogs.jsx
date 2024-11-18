@@ -1,6 +1,6 @@
 // src/components/Blogs.jsx
 import React, { useEffect, useState } from 'react';
-import { getBlogs } from '../firebaseConfig';
+import { getBlogs } from '../firebaseConfig'
 import BlogCard from './BlogCard';
 
 const Blogs = () => {
